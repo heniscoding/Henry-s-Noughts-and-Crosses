@@ -1,45 +1,64 @@
-# DOM Mini-Apps
+# Henry's Noughts and Crosses
 
-Instructions for this sprint can be found at: https://l2c.northcoders.com/courses/fe/dom-mini-apps
+Welcome to Henry's Noughts and Crosses, a simple web-based tic-tac-toe game developed by Henry's Coding!
 
-## Noughts and Crosses
+## Table of Contents
 
-- Users can click on squares to place an alternating `X`, or `O`, marker.
-- If a user places three of their markers either horizontally, vertically, or diagonally, then the game lets them know that they've won!
+- [Introduction](#introduction)
+- [Features](#features)
+- [Demo](#demo)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-_Additional_
+## Introduction
 
-- Players can only choose squares that haven't already been taken.
-- Once a player has won, allow them to reset the game.
-- Keep track of the players' scores.
-- Alternate who goes first.
+Henry's Noughts and Crosses is a classic tic-tac-toe game built with HTML, CSS, and JavaScript. The game allows two players to take turns marking spaces on a 3x3 grid with their respective symbols (either "X" or "O"). The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.
 
+## Features
 
-What are the basic features that your mini app needs?
+- Simple and intuitive user interface
+- Two-player gameplay
+- Automatic detection of winning moves and tie games
+- Responsive design for desktop and mobile devices
 
-1. A grid of 3x3  buttons representing the playing field. Each button should have its own unique id. (change id by mouse clicking)
-2. Alternating between noughts and crosses is a heading on top of the grid to show player's turn. 
-3. A condition needs to be set for winning (three in a line either horizontally, vertically or diagonally)
-4. When the condition of winning is met, the three matching fields will change background color.
-5. A draw is reached if the grid is full and the condition of winning isn't met.
-6. A button that resets or restarts the grid could be used in cases of winning or draw.
-7. In case of a win a the header is updated to ${player} wins or in case of a draw the header is updated to "No one won, try again" for 2 seconds and resets automatically.
-8. Each time a player plays a move the game checks for a win or draw scenario.      
+## Demo
 
-Advanced functionality:
+You can play the game live [here](link).
 
-- Keep track of the players' scores.
+## Installation
 
-How will your web page be structured?
+To run the game locally, follow these steps:
 
-- Heading: indicates who's turn it is and what they're playing as. The heading toggles between the players based on clicks. Each time a valid cell is clicked the heading toggles.
-ex. (player one as "O") (player two as "X")
-- A grid of 3x3 cells each with unique ids that start as empty cells.
-- A reset button at the bottom of the grid to clear the grid at any point in the game. 
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/heniscoding/Henry-s-Noughts-and-Crosses.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd Henry-s-Noughts-and-Crosses
+    ```
+3. Open the index.html file in your web browser.
 
-How will users interact with your web page?
+## Usage
 
-"Click event listeners"
+- Click on an empty cell to place your symbol (either "X" or "O").
+- Take turns with your opponent to make moves.
+- The game will automatically detect winning moves and announce the winner.
+- If no winner is found and all cells are filled, the game will declare a tie.
 
-- Clicking on the cells to start the game. First click within the cells assigns a player naughts.
+## Contributing
 
+Contributions are welcome! If you'd like to contribute to the project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature-name`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add new feature'`).
+5. Push to the branch (`git push origin feature/your-feature-name`).
+6. Create a new pull request.
+
+## License
+
+This project is licensed under the MIT License.
