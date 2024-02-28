@@ -12,41 +12,43 @@ const winningConditionsMet = (sign, playersTurnElement) => {
   const cell7 = document.getElementById("cell7").innerText;
   const cell8 = document.getElementById("cell8").innerText;
   const cell9 = document.getElementById("cell9").innerText;
-  if (
-    (cell1 === sign && cell2 === sign && cell3 === sign) ||
-    (cell1 === sign && cell4 === sign && cell7 === sign) ||
-    (cell1 === sign && cell5 === sign && cell9 === sign) ||
-    (cell2 === sign && cell5 === sign && cell8 === sign) ||
-    (cell3 === sign && cell6 === sign && cell9 === sign) ||
-    (cell3 === sign && cell5 === sign && cell7 === sign) ||
-    (cell4 === sign && cell5 === sign && cell6 === sign) ||
-    (cell7 === sign && cell8 === sign && cell9 === sign)
-  ) {
-    playersTurnElement.innerText = `Player ${sign} WINS!`;
-    setTimeout(resetCells,1000);
+
+  const winningCombinations = [
+    [cell1, cell2, cell3],
+    [cell1, cell4, cell7],
+    [cell1, cell5, cell9],
+    [cell2, cell5, cell8],
+    [cell3, cell6, cell9],
+    [cell3, cell5, cell7],
+    [cell4, cell5, cell6],
+    [cell7, cell8, cell9]
+  ];
+
+  for (const combination of winningCombinations) {
+    if (combination.every(cell => cell === sign)) {
+      playersTurnElement.innerText = `Player ${sign} WINS!`;
+      setTimeout(resetCells, 2000);
+      return;
+    }
+  }
+
+
+  const allCellsFilled = [cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9].every(cell => cell !== "");
+  if (allCellsFilled) {
+    playersTurnElement.innerText = "It's a Tie!";
+    setTimeout(resetCells, 2000);
   }
 };
-
-let playerX = [];
-let playerO = [];
 
 for (let i = 1; i <= 9; i++) {
   let cell = document.getElementById("cell" + i);
   cell.addEventListener("click", () => {
-    if (count === 0 && cell.innerText === "") {
-      cell.innerText = "X";
-      count += 1;
-      playersTurn.innerText = "Player 2, it's your turn!";
-      playerX.push(i);
-      winningConditionsMet("X", playersTurn);
-      playerX = [];
-    } else if (count === 1 && cell.innerText === "") {
-      cell.innerText = "O";
-      count -= 1;
-      playersTurn.innerText = "Player 1, it's your turn!";
-      playerO.push(i);
-      winningConditionsMet("O", playersTurn);
-      playerO = [];
+    if (cell.innerText === "") {
+      cell.innerText = currentPlayer;
+      count++;
+      currentPlayer = currentPlayer === "X" ? "O" : "X";
+      playersTurn.innerText = `Player ${currentPlayer}, it's your turn!`;
+      winningConditionsMet(currentPlayer === "X" ? "O" : "X", playersTurn);
     }
   });
 }
@@ -55,6 +57,8 @@ const resetCells = () => {
   for (let i = 1; i <= 9; i++) {
     document.getElementById("cell" + i).innerText = "";
   }
+  currentPlayer = "X";
+  count = 0;
   playersTurn.innerText = "Player 1, you're playing as crosses!";
 };
 
